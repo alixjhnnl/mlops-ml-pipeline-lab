@@ -71,5 +71,5 @@ train:
 # ALL-IN-ONE PIPELINE
 # ======================================================================
 
-pipeline: clean split train
+pipeline: env_update install_dependencies update_dependencies clean split train
 	@echo "All tasks completed successfully."
