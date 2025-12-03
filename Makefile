@@ -48,22 +48,26 @@ update_dependencies:
 # Run data preprocessing script
 clean:
 	@echo "=> Running data preprocessing..."
-	## your code here
+	python ml_houseprice_prediction/src/ml_houseprice_prediction/data_preprocessing/data_preprocessing.py \
+		--input_data_path $(INPUT_DATA_PATH) \
+		--output_data_filename $(OUTPUT_FILENAME)
 	@echo "=> Data preprocessing completed. Clean data saved to $(OUTPUT_FILENAME)."
 
 # Run data preprocessing script
 split:
 	@echo "=> Running splits data ..."
-	## your code here
+	python ml_houseprice_prediction/src/ml_houseprice_prediction/data_splits/splits.py \
+		--input_data_path datastores/clean_data/$(OUTPUT_FILENAME)
 	@echo "=> Splits data completed. Clean data saved to $(OUTPUT_FILENAME)."
 
 # Run training script
 train:
 	@echo "=> Running train model..."
-	## your code here
+	python ml_houseprice_prediction/src/ml_houseprice_prediction/train_model.py \
+		--input_train_data $(INPUT_TRAIN_DATA) \
+		--input_test_data $(INPUT_TEST_DATA) \
+		--model_filename LinearRegression.joblib
 	@echo "=> train model completed successfully."	
-
-
 
 # ======================================================================
 # ALL-IN-ONE WORKFLOW : local ci pipeline
